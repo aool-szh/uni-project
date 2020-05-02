@@ -9,7 +9,7 @@ scroll-view,
 page {
     margin: 0;
     padding: 0;
-    border-style: border-box;
+    box-sizing: border-box;
 }
 page {
     font-size: 28rpx;

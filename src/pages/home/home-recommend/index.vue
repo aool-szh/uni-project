@@ -7,9 +7,9 @@
   >
     <!-- 推荐开始 -->
     <view class="recommend_warp">
-      <view class="recommend_item" v-for="item in recommends" :key="item.id">
+      <navigator :url="`/pages/album/index?id=${item.target}`" class="recommend_item" v-for="item in recommends" :key="item.id">
         <image mode="widthFix" :src="item.thumb" />
-      </view>
+      </navigator>
     </view>
     <!-- 推荐结束 -->
 
@@ -90,7 +90,6 @@ export default {
           return;
         }
         if (this.recommends.length === 0) {
-          console.log(result);
           this.recommends = result.res.homepage[1].items;
           this.monthes = result.res.homepage[2];
           this.monthes.MM = moment(this.monthes.stime).format("MM");
@@ -174,8 +173,6 @@ export default {
       width: 33.33%;
       border: 5rpx solid #fff;
       box-sizing: border-box;
-      image {
-      }
     }
   }
 }

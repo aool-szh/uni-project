@@ -7,6 +7,12 @@
 			}
 		},
 		{
+			"path": "pages/album/index",
+			"style": {
+				"navigationBarTitleText": "album"
+			}
+		},
+		{
 			"path": "pages/horizontal/index",
 			"style": {
 				"navigationBarTitleText": "horizontal"
