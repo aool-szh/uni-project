@@ -7,7 +7,12 @@
   >
     <!-- 推荐开始 -->
     <view class="recommend_warp">
-      <navigator :url="`/pages/album/index?id=${item.target}`" class="recommend_item" v-for="item in recommends" :key="item.id">
+      <navigator
+        :url="`/pages/album/index?id=${item.target}`"
+        class="recommend_item"
+        v-for="item in recommends"
+        :key="item.id"
+      >
         <image mode="widthFix" :src="item.thumb" />
       </navigator>
     </view>
@@ -26,8 +31,10 @@
         <view class="monthes_title_more">更多</view>
       </view>
       <view class="monthes_content">
-        <view class="monthes_item" v-for="item in monthes.items" :key="item.id">
-          <image mode="aspectFill" :src="item.thumb+item.rule.replace('$<Height>', 360)" />
+        <view class="monthes_item" v-for="(item,index) in monthes.items" :key="item.id">
+          <go-detail :list="monthes.items" :index="index">
+            <image mode="aspectFill" :src="item.thumb+item.rule.replace('$<Height>', 360)" />
+          </go-detail>
         </view>
       </view>
     </view>
@@ -39,8 +46,10 @@
         <text>热门</text>
       </view>
       <view class="hots_content">
-        <view class="hot_item" v-for="item in hots" :key="item.id">
-          <image mode="widthFix" :src="item.thumb" />
+        <view class="hot_item" v-for="(item,index) in hots" :key="item.id">
+          <go-detail :list="hots" :index="index">
+            <image mode="widthFix" :src="item.thumb" />
+          </go-detail>
         </view>
       </view>
     </view>
@@ -50,7 +59,11 @@
 
 <script>
 import moment from "moment";
+import goDetail from "@/components/goDetail";
 export default {
+  components: {
+    goDetail
+  },
   data() {
     return {
       recommends: [],
@@ -84,9 +97,8 @@ export default {
         url: "http://157.122.54.189:9088/image/v3/homepage/vertical",
         data: this.parmas
       }).then(result => {
-
-        if (result.res.vertical.length ===0) {
-          this.hasMore=false;
+        if (result.res.vertical.length === 0) {
+          this.hasMore = false;
           return;
         }
         if (this.recommends.length === 0) {

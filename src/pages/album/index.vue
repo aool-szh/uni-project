@@ -20,14 +20,18 @@
 
     <view class="album_list">
       <view class="album_item" v-for="item in wallpaper" :key="item.id">
-        <image :src="item.thumb + item.rule.replace('$<Height>',360)" mode="widthFix" />
+        <go-detail :list="wallpaper" :index="index">
+          <image :src="item.thumb + item.rule.replace('$<Height>',360)" mode="aspectFill" />
+        </go-detail>
       </view>
     </view>
   </div>
 </template>
 
 <script>
+import goDetail from "@/components/goDetail";
 export default {
+    components: {goDetail},
   data() {
     return {
       params: {
@@ -127,9 +131,6 @@ export default {
       margin-left: 15rpx;
     }
   }
-
-  .album_author_desc {
-  }
 }
 
 .album_list {
@@ -138,7 +139,8 @@ export default {
   .album_item {
     width: 33.33%;
     border: 3rpx solid #fff;
-    image {
+    image{
+      height: 180rpx;
     }
   }
 }

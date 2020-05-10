@@ -35,6 +35,24 @@
 			"style": {
 				"navigationBarTitleText": "video"
 			}
+		},
+		{
+			"path": "pages/imgDetail/index",
+			"style": {
+				"navigationBarTitleText": "imgDetail"
+			}
+		},
+		{
+			"path": "pages/imgCategory/index",
+			"style": {
+				"navigationBarTitleText": "imgCategory"
+			}
+		},
+		{
+			"path": "pages/videoPlay/index",
+			"style": {
+				"navigationBarTitleText": "videoPaly"
+			}
 		}
 	],
 	"globalStyle": {
